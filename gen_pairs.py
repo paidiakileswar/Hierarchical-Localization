@@ -100,5 +100,5 @@ if __name__ == "__main__":
         type=int,
         help='Number of nearest neighbors to consider for each image')
     args = parser.parse_args()
-    args.geo_file, args.output_file, args.num_matched = "./geo.txt" , "./pairs.txt" , 20
+    args.geo_file, args.output_file, args.num_matched = "./geo.txt" , "./pairs.txt" , 5
     main(args.geo_file, args.output_file, args.num_matched)

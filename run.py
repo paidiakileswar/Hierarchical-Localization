@@ -16,7 +16,7 @@ import time
 import subprocess
 import logging
 
-from hloc import extract_features, match_features
+from hloc import extract_features, match_features, reconstruction
 
 def setup_logger():
     # Set up logger
@@ -42,6 +42,7 @@ def sp_sg(args, workdir, TIMEOUT, logger):
     # Define paths based on workdir
     outputs = Path(workdir)  # Using workdir instead of root directory
     images = outputs / 'images'
+    sfm_dir = outputs / 'sfm_test'
     sfm_pairs = outputs / 'pairs.txt'
     features = outputs / 'export' / 'features.h5'
     matches = outputs / 'export' / 'matches.h5'
@@ -52,7 +53,7 @@ def sp_sg(args, workdir, TIMEOUT, logger):
     logger.info("Referencing completed")
 
     # Extract features using SuperPoint
-    extract_features.main(
+    feature_path = extract_features.main(
         feature_conf,
         images,
         image_list=references,
@@ -61,7 +62,7 @@ def sp_sg(args, workdir, TIMEOUT, logger):
     logger.info("Feature Extraction Completed")
 
     # Match features using SuperGlue
-    match_features.main(
+    match_path = match_features.main(
         matcher_conf,
         sfm_pairs,
         features=features,
@@ -76,6 +77,7 @@ def sp_sg(args, workdir, TIMEOUT, logger):
     time_taken = time.time() - start_time
     logger.info(f"Time taken for SuperPoint Feature extraction and matching: {time_taken:.2f} seconds")
 
+    model = reconstruction.main(sfm_dir, images, sfm_pairs, feature_path, match_path)
 
 if __name__ == "__main__":
     workdir = "./"

@@ -5,9 +5,10 @@ __pycache__
 outputs/
 datasets/*
 !datasets/sacre_coeur/
-export
+export*
 images
 clean_geo.py
 geo.txt
 pairs.txt
+sfm_test
 
