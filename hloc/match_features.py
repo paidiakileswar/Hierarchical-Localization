@@ -43,6 +43,17 @@ confs = {
             'sinkhorn_iterations': 50,
         },
     },
+    "sphereglue": {
+        "output": "matches-sphereglue",
+        "model": {
+            "name": "sphereglue",
+            "weights": "outdoor",
+            "sinkhorn_iterations": 200,
+            "match_threshold": 0.1,
+            "knn": 20,
+            "max_kpts": 40000
+        },
+    },
     'superglue-fast': {
         'output': 'matches-superglue-it5',
         'model': {

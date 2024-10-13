@@ -5,3 +5,9 @@ __pycache__
 outputs/
 datasets/*
 !datasets/sacre_coeur/
+export
+images
+clean_geo.py
+geo.txt
+pairs.txt
+

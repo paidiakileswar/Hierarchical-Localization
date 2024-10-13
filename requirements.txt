@@ -1,13 +1,26 @@
-torch>=1.1
-torchvision>=0.3
-numpy
-opencv-python
+# Core dependencies
+torch==2.0.1  # Keeping this as it's compatible with torch-geometric
+torchvision==0.15.2
+torchaudio==2.0.2
+numpy==1.25.2  # Latest compatible version with torch 2.0.1
+opencv-python==4.8.0.76
+matplotlib==3.7.2
 tqdm>=4.36.0
-matplotlib
 plotly
 scipy
 h5py
 pycolmap>=0.3.0
 kornia>=0.6.11
 gdown
+
+# Torch Geometric and related packages (compatible with torch 2.0.1)
+torch-geometric==2.3.1
+-f https://data.pyg.org/whl/torch-2.0.0+cu117.html
+pyg-lib
+torch-scatter
+torch-sparse
+torch-cluster
+torch-spline-conv
+
+# LightGlue (installing from git repository)
 lightglue @ git+https://github.com/cvg/LightGlue
