@@ -119,8 +119,9 @@ def main(sfm_dir: Path,
                    min_match_score, skip_geometric_verification)
     if not skip_geometric_verification:
         estimation_and_geometric_verification(database, pairs, verbose)
-    reconstruction = run_reconstruction(
-        sfm_dir, database, image_dir, verbose, mapper_options)
+    # reconstruction = run_reconstruction(
+    #     sfm_dir, database, image_dir, verbose, mapper_options)
+    reconstruction = None
     if reconstruction is not None:
         logger.info(f'Reconstruction statistics:\n{reconstruction.summary()}'
                     + f'\n\tnum_input_images = {len(image_ids)}')
